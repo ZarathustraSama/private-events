@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true
+
+  has_many :created_events, foreign_key: "creator_id", class_name: "Event"
 end
