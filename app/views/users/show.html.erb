@@ -1,0 +1,14 @@
+<h1>Here are all <%= current_user.username %>'s events available!</h1>
+<% if @events.any? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <div class="Event">
+          <p>event.name</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>...or not I guess?</p>
+<% end %>
