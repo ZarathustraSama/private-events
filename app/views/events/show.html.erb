@@ -1,0 +1,8 @@
+<h1><%= @event.name %></h1>
+<p> This event is scheduled by
+  <% if current_user&.id == @event.creator_id %>
+    you
+  <% else %>
+    <%= @event.creator.username %>
+  <% end %>
+   for the following date: <%= @event.date %> </p>
