@@ -13,6 +13,7 @@
   <p>...or not I guess?</p>
 <% end %>
 <% if user_signed_in? %>
+  <%= link_to "Make your new event!", new_event_path %><br />
   <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
 <% else %>
   <%= link_to "Log in", new_user_session_path %>
