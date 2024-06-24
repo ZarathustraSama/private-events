@@ -1,7 +1,7 @@
 <h1>Here are all <%= current_user.username %>'s events available!</h1>
-<% if @events.any? %>
+<% if @user.created_events.any? %>
   <ul>
-    <% @events.each do |event| %>
+    <% @user.created_events.each do |event| %>
       <li>
         <div class="Event">
           <p><%= event.name %></p>
@@ -11,5 +11,19 @@
   </ul>
 <% else %>
   <p>...or not I guess?</p>
+<% end %>
+<h3>Here are all of their attended events!</h3>
+<% if @user.attended_events.any? %>
+  <ul>
+    <% @user.attended_events.each do |event| %>
+      <li>
+        <div class="Event">
+          <p><%= event.name %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>...if there were any, that is...</p>
 <% end %>
 <%= link_to "Make a new event!", new_event_path %>
