@@ -18,8 +18,8 @@
 <% else %>
   <%= link_to "Log in", new_user_session_path %>
 <% end %>
-<br />
-<br />
 <% if flash[:alert] %>
+  <br />
+  <br />
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
