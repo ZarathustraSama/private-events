@@ -1,8 +1,39 @@
 <h1><%= @event.name %></h1>
-<p> This event is scheduled by
+<div> This event is scheduled for the <%= @event.date %> by
   <% if current_user&.id == @event.creator_id %>
-    you
+    you.
   <% else %>
-    <%= @event.creator.username %>
+    <%= @event.creator.username %>.
+    <br />
+    <br />
+    <%= form_with model: @event, url: event_attendees_path, method: :post  do |form| %>
+      <%= form.hidden_field :id, :value => @event.id %>
+      <%= form.submit "Attend event" %>
+    <% end %>
   <% end %>
-   for the following date: <%= @event.date %> </p>
+</div>
+<% if flash[:alert] %>
+  <br />
+  <br />
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<br />
+<br />
+<p>This event
+  <% if @event.attendees.any? %>
+   is attended by the following people:</p>
+    <ul>
+      <% @event.attendees.each do |attendee| %>
+        <li>
+          <div class="Attendee">
+            <%= attendee.username %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    has yet to be attended. </p>
+  <% end %>
+  <br />
+    
