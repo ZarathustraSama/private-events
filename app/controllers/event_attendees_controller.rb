@@ -2,7 +2,7 @@ class EventAttendeesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def create
-    if EventAttendee.where("event_attendee_id = ? AND attended_event_id = ?", current_user.id, event_params[:id])
+    if EventAttendee.where("event_attendee_id = ? AND attended_event_id = ?", current_user.id, event_params[:id]).any?
       flash[:alert] = "You already are attending this event!"
       redirect_to event_path(event_params[:id])
     else
