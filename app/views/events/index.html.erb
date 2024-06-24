@@ -1,17 +1,34 @@
-<h1>Here are all the events available!</h1>
-<% if @events.any? %>
+<h1>Here are all the upcoming events available!</h1>
+<% if @events.upcoming.any? %>
   <ul>
-    <% @events.each do |event| %>
+    <% @events.upcoming.each do |event| %>
       <li>
-        <div class="Event">
+        <div class="Upcoming-Event">
           <%= link_to event.name, event_path(event.id) %>
         </div>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>...or not I guess?</p>
+  <p>...if there were any...</p>
 <% end %>
+<br />
+<h2>Here are all past events</h2>
+<% if @events.past.any? %>
+  <ul>
+    <% @events.past.each do |event| %>
+      <li>
+        <div class="Past-Event">
+          <%= link_to event.name, event_path(event.id) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>...if there were any...</p>
+<% end %>
+
+
 <% if user_signed_in? %>
   <%= link_to "Make your new event!", new_event_path %><br />
   <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
