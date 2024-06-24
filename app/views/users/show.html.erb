@@ -17,9 +17,15 @@
   <ul>
     <% @user.attended_events.each do |event| %>
       <li>
-        <div class="Event">
-          <p><%= event.name %></p>
-        </div>
+        <% if event.date < Time.now.to_date %>
+          <div class="Old-Event">
+            <p><%= event.name %> (ended)</p>
+          </div>
+        <% else %>
+          <div class="Future-Event">
+            <p><%= event.name %></p>
+          </div>
+        <% end %>
       </li>
     <% end %>
   </ul>
