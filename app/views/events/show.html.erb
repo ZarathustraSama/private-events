@@ -4,6 +4,9 @@
 <div> This event is scheduled for the <%= @event.date %> by
   <% if current_user&.id == @event.creator_id %>
     you.
+    <br />
+    <br />
+    <%= link_to "Modify", edit_event_path(@event.id) %>
   <% else %>
     <%= @event.creator.username %>.
     <br />

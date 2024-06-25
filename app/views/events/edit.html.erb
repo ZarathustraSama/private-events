@@ -1,0 +1,11 @@
+<%= render "layouts/navigation" %>
+
+<h1>Edit your own event here!</h1>
+
+<%= form_with model: @event do |form| %>
+  <%= form.label :name, "What event is about?" %><br />
+  <%= form.text_field :name, placeholder: @event.name %><br /><br />
+  <%= form.label :date, "When:" %><br />
+  <%= form.date_field :date, placeholder: @event.date %><br /><br />
+  <%= form.submit "Edit" %><br />
+<% end %>
