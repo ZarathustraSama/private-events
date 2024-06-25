@@ -7,6 +7,12 @@
     <br />
     <br />
     <%= link_to "Modify", edit_event_path(@event.id) %>
+    <br />
+    <br />
+    <%= form_with model: @event, url: event_path, method: :delete  do |form| %>
+      <%= form.hidden_field :id, :value => @event.id %>
+      <%= form.submit "Delete" %>
+    <% end %>
   <% else %>
     <%= @event.creator.username %>.
     <br />

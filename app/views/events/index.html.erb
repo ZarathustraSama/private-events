@@ -5,7 +5,7 @@
   <ul>
     <% @events.upcoming.each do |event| %>
       <li>
-        <div class="Upcoming-Event">
+        <div class="upcoming-event">
           <%= link_to event.name, event_path(event.id) %>
         </div>
       </li>
@@ -20,7 +20,7 @@
   <ul>
     <% @events.past.each do |event| %>
       <li>
-        <div class="Past-Event">
+        <div class="past-event">
           <%= link_to event.name, event_path(event.id) %>
         </div>
       </li>
@@ -33,4 +33,9 @@
   <br />
   <br />
   <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+<% if flash[:notice] %>
+  <br />
+  <br />
+  <div class="notice"><%= flash[:notice] %></div>
 <% end %>
